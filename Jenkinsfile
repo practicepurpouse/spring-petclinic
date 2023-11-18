@@ -23,20 +23,5 @@ pipeline {
                       allowEmptyResults: false
             }
         }
-
-        stage('Stash') {
-            steps {
-                stash name: 'artifact',
-                      includes: '**/target/*.jar'
-            }
-        }
-
-        stage('Deploy to VM-Unstash') {
-            agent { label 'vm-linux' }
-            steps {
-                unstash name: 'artifact'
-                sh 'java -jar **/target/*.jar'
-            }
-        }
     }
 }
