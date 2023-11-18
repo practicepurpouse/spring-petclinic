@@ -1,11 +1,11 @@
 pipeline {
     agent { label 'Jdk17-Maven' }
-    triggers { pollSCM('* * * * *') }
+    triggers { pollSCM('* 23 * * 1-5') }
     stages {
         stage('VCS') {
             steps {
                 git url:'https://github.com/practicepurpouse/spring-petclinic.git',
-                    branch: 'develop'
+                    branch: 'sprint_release_1'
             }
         }
 
