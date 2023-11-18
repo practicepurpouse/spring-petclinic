@@ -1,4 +1,5 @@
 pipeline {
+    agent { label 'Jdk17-Maven' }
     triggers { pollSCM('* * * * *') }
     stages {
         stage('VCS') {
